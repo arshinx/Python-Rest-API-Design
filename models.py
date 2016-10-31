@@ -22,3 +22,8 @@ class Review(Model):
 
     class Meta:
         database = DATABASE
+
+# Initializer
+def initialize():
+    DATABASE.connect()
+    DATABASE.create_tables([Course, Review], safe=True)
