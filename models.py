@@ -19,3 +19,6 @@ class Review(Model):
     rating = IntegerField()
     comment = TextField(default='')
     created_at = DateTimeField(default=datetime.datetime.now)
+
+    class Meta:
+        database = DATABASE
