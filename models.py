@@ -2,7 +2,7 @@
 import datetime
 from peewee import *
 
-DATABASE = Sqlitedatabase('courses.sqlite')
+DATABASE = SqliteDatabase('courses.sqlite')
 
 # Course Model
 class Course(Model):
