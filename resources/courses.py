@@ -4,7 +4,12 @@ from flask.ext.restful import Resource, Api, reqparse, inputs, fields
 import models
 
 # Fields
-
+course_fields = {
+    'id': fields.Integer,
+    'title': fields.String,
+    'url': fields.String,
+    'reviews': fields.List(fields.String)
+}
 
 # CourseList - returns list of courses
 class CourseList(Resource):
