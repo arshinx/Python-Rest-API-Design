@@ -12,6 +12,7 @@ PORT  = 8000
 
 app = Flask(__name__)
 app.register_blueprint(courses_api)
+app.register_blueprint(reviews_api, url_prefix='/api/v1')
 
 # Routes
 
