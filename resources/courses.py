@@ -1,6 +1,6 @@
 # Courses
 from flask import jsonify, Blueprint
-from flask.ext.restful import (Resource, Api, reqparse, inputs, fields, marshal, marshal_with)
+from flask.ext.restful import (Resource, Api, reqparse, inputs, fields, marshal, marshal_with, url_for)
 import models
 
 # Fields
@@ -10,6 +10,10 @@ course_fields = {
     'url': fields.String,
     'reviews': fields.List(fields.String)
 }
+
+def add_reviews(course):
+    course.reviews = [url_for('resources.reviews.review', id = review.id) for review in courses.review_set]
+    return course
 
 # CourseList - returns list of courses
 class CourseList(Resource):
