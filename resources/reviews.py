@@ -70,6 +70,7 @@ class ReviewList(Resource):
 
 # Review - returns a select review
 class Review(Resource):
+    @marshal_with(review_fields)
     def get(self, id):
         return jsonify({'course': 1, 'rating': 5})
 
