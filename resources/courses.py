@@ -80,6 +80,8 @@ class Course(Resource):
     @marshal_with(course_fields)
     def get(self, id):
         return add_reviews(course_or_404(id))
+        # or remove decorator '@' and add:
+        # return marshall_with(add_reviews(course_or_404(id)), course_fields)
 
     def put(self, id):
         return jsonify({'title': 'Python Basics'})
