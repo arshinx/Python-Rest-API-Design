@@ -1,6 +1,6 @@
 # Courses
 from flask import jsonify, Blueprint
-from flask.ext.restful import Resource, Api, reqparse, inputs
+from flask.ext.restful import Resource, Api, reqparse, inputs, fields
 import models
 import requests
 
@@ -13,7 +13,7 @@ class ReviewList(Resource):
         'course',
         required = True,
         help = 'No course provided',
-        location = ['form', 'json']
+        location = ['form', 'json'],
         type = inputs.positive
         )
 
