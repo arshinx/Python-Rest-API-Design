@@ -1,5 +1,5 @@
 # Courses
-from flask import jsonify
+from flask import jsonify, Blueprint
 from flask.ext.restfull import Resource
 import models
 
