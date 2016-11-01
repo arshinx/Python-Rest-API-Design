@@ -55,7 +55,10 @@ class ReviewList(Resource):
         super(ReviewList, self).__init__()
 
     def get(self):
-        return jsonify({'reviews': [{'course': 1, 'rating': 5}] })
+        return {'reviews': [
+            marshal(add_course(review), review_fields)
+            for review in models.Review.select()
+        ]}
 
 # Review - returns a select review
 class Review(Resource):
