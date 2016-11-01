@@ -1,6 +1,6 @@
 # Courses
-from flask import jsonify, Blueprint, abort
-from flask.ext.restful import (Resource, Api, reqparse, inputs, fields, marshal, marshal_with, url_for)
+from flask import jsonify, Blueprint
+from flask.ext.restful import (Resource, Api, reqparse, inputs, fields, marshal, marshal_with, url_for, abort)
 import models
 
 # Fields
