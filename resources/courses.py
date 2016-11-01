@@ -1,6 +1,6 @@
 # Courses
 from flask import jsonify, Blueprint
-from flask.ext.restful import Resource, Api, reqparse, inputs, fields
+from flask.ext.restful import (Resource, Api, reqparse, inputs, fields, marshal, marshal_with)
 import models
 
 # Fields
@@ -33,7 +33,8 @@ class CourseList(Resource):
         super(CourseList, self).__init__()
 
     def get(self):
-        return jsonify({'courses': [{'title': 'Python Basics'}] })
+        courses = models.Course.select()
+        return {'courses': courses}
 
     def post(self):
         args = self.reqparse.parse_args()
