@@ -1,6 +1,6 @@
 # Courses
 from flask import jsonify, Blueprint
-from flask.ext.restfull import Resource
+from flask.ext.restful import Resource, Api
 import models
 
 class CourseList(Resource):
