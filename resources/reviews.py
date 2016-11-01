@@ -60,6 +60,14 @@ class ReviewList(Resource):
             for review in models.Review.select()
         ]}
 
+    @marshal_with(review_fields)
+    def post(self):
+        args = self.reqparse.parse_args()
+        review = models.Review.create(**args)
+        return (add_course(review), 201, {
+                'Location': url_for('resources.reviews.review', id=review.id)
+               })
+
 # Review - returns a select review
 class Review(Resource):
     def get(self, id):
