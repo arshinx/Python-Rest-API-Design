@@ -16,3 +16,5 @@ class Course(Resource):
 
     def delete(self, id):
         return jsonify({'title': 'Python Basics'})
+
+courses_api = Blueprint('resources_courses', __name__)
