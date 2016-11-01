@@ -1,6 +1,6 @@
 # Courses
 from flask import jsonify, Blueprint
-from flask.ext.restful import Resource, Api
+from flask.ext.restful import Resource, Api, reqparse
 import models
 
 # CourseList - returns list of courses
@@ -21,7 +21,7 @@ class CourseList(Resource):
         help = 'No course URL provided',
         location = ['form', 'json']
         )
-        super().__init__()
+        super(CourseList, self).__init__()
 
     def get(self):
         return jsonify({'courses': [{'title': 'Python Basics'}] })
