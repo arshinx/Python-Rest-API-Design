@@ -1,5 +1,9 @@
+# Library imports
 from flask import Flask
+
+# Local Imports
 import models
+from resources.courses import course_api
 
 DEBUG = True
 HOST  = '0.0.0.0'
