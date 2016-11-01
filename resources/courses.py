@@ -37,7 +37,7 @@ class CourseList(Resource):
         super(CourseList, self).__init__()
 
     def get(self):
-        courses = [marshal(course, course_fields) for course in models.Course.select()]
+        courses = [marshal(add_reviews(course), course_fields) for course in models.Course.select()]
         return {'courses': courses}
 
     def post(self):
