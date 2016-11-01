@@ -1,8 +1,15 @@
 # Courses
 from flask import jsonify, Blueprint
-from flask.ext.restful import Resource, Api, reqparse, inputs, fields
+from flask.ext.restful import (Resource, Api, reqparse, inputs, fields, marshal, marshal_with, url_for, abort)
 import models
-import requests
+
+review_fields = {
+    'id': fields.Integer,
+    'for_course': fields.String,
+    'rating': fields.Integer,
+    'comment': fields.String(default=''),
+    'created_at': fields.DateTime
+}
 
 # ReviewList - returns all reviews
 class ReviewList(Resource):
