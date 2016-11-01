@@ -26,6 +26,10 @@ class CourseList(Resource):
     def get(self):
         return jsonify({'courses': [{'title': 'Python Basics'}] })
 
+    def post(self):
+        args = self.reqparse.parse_args()
+        return jsonify({'courses': [{'title': 'Python Basics'}] })
+
 # Course - returns a single course
 class Course(Resource):
     def get(self, id):
