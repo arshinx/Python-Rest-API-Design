@@ -19,6 +19,10 @@ def review_or_404(review_id):
     else:
         return review
 
+def add_course(review):
+    review.for_course = url_for('resources.courses.course', id=review.course.id)
+    return review
+
 # ReviewList - returns all reviews
 class ReviewList(Resource):
     def __init__(self):
