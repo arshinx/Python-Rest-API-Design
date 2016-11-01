@@ -58,8 +58,28 @@ class CourseList(Resource):
 
 # Course - returns a single course
 class Course(Resource):
+    def __init__(self):
+        self.reqparse = reqparse.RequestParser()
+
+        self.reqparse.add_argument(
+        'title',
+        required = True,
+        help = 'No course title provided',
+        location = ['form', 'json']
+        )
+
+        self.reqparse.add_argument(
+        'url',
+        required = True,
+        help = 'No course URL provided',
+        location = ['form', 'json'],
+        type = inputs.url
+        )
+        super(Course, self).__init__()
+
+    @marshal_with(course_fields)
     def get(self, id):
-        return jsonify({'title': 'Python Basics'})
+        return add_reviews(course_or_404(id))
 
     def put(self, id):
         return jsonify({'title': 'Python Basics'})
