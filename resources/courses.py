@@ -21,7 +21,7 @@ def course_or_404(course_id):
     try:
         course = models.Course.get(models.Course.id == course_id)
     except models.Course.DoesNotExist:
-        abort(404, "Course {} does not exist".format(course_id))
+        abort(404, message="Course {} does not exist".format(course_id))
     else:
         return course
 
