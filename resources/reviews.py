@@ -11,6 +11,14 @@ review_fields = {
     'created_at': fields.DateTime
 }
 
+def review_or_404(review_id):
+    try:
+        review = models.Review.get(models.Review.id==review_id)
+    except models.Review.DoesNotExist:
+        abort(404)
+    else:
+        return review
+
 # ReviewList - returns all reviews
 class ReviewList(Resource):
     def __init__(self):
