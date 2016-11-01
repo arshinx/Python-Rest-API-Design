@@ -19,7 +19,8 @@ class CourseList(Resource):
         'url',
         required = True,
         help = 'No course URL provided',
-        location = ['form', 'json']
+        location = ['form', 'json'],
+        type = inputs.url
         )
         super(CourseList, self).__init__()
 
