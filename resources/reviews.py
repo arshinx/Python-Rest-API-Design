@@ -6,6 +6,26 @@ import requests
 
 # ReviewList - returns all reviews
 class ReviewList(Resource):
+    def __init__(self):
+        self.reqparse = reqparse.RequestParser()
+
+        self.reqparse.add_argument(
+        'course',
+        required = True,
+        help = 'No course provided',
+        location = ['form', 'json']
+        type = inputs.positive
+        )
+
+        self.reqparse.add_argument(
+        'rating',
+        required = True,
+        help = 'No rating provided',
+        location = ['form', 'json'],
+        type = inputs.int_range(1, 5)
+        )
+        super(ReviewList, self).__init__()
+
     def get(self):
         return jsonify({'reviews': [{'course': 1, 'rating': 5}] })
 
