@@ -24,6 +24,15 @@ class ReviewList(Resource):
         location = ['form', 'json'],
         type = inputs.int_range(1, 5)
         )
+
+        self.reqparse.add_argument(
+        'comment',
+        required = False,
+        nullable = True,
+        location = ['form', 'json'],
+        default = ''
+        )
+
         super(ReviewList, self).__init__()
 
     def get(self):
