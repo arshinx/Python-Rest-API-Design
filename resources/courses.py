@@ -18,3 +18,5 @@ class Course(Resource):
         return jsonify({'title': 'Python Basics'})
 
 courses_api = Blueprint('resources_courses', __name__)
+api = Api(courses_api)
+api.add_resource(CourseList, '/api/v1/courses/<int:id>', endpoint='course')
