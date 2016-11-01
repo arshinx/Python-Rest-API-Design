@@ -4,6 +4,7 @@ from flask import Flask
 # Local Imports
 import models
 from resources.courses import courses_api
+from resources.reviews import reviews_api
 
 DEBUG = True
 HOST  = '0.0.0.0'
