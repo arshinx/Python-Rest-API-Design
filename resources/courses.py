@@ -13,3 +13,6 @@ class Course(Resource):
 
     def put(self, id):
         return jsonify({'title': 'Python Basics'})
+
+    def delete(self, id):
+        return jsonify({'title': 'Python Basics'})
