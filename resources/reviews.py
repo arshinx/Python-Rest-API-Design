@@ -2,6 +2,7 @@
 from flask import jsonify, Blueprint
 from flask.ext.restful import Resource, Api
 import models
+import requests
 
 # ReviewList - returns all reviews
 class ReviewList(Resource):
