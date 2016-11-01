@@ -1,5 +1,5 @@
 # Courses
-from flask import jsonify, Blueprint
+from flask import jsonify, Blueprint, abort
 from flask.ext.restful import (Resource, Api, reqparse, inputs, fields, marshal, marshal_with, url_for)
 import models
 
@@ -11,9 +11,20 @@ course_fields = {
     'reviews': fields.List(fields.String)
 }
 
+# Add Reviews (Empty List when no reviews present)
 def add_reviews(course):
-    course.reviews = [url_for('resources.reviews.review', id = review.id) for review in courses.review_set]
+    course.reviews = [url_for('resources.reviews.review', id = review.id) for review in course.review_set]
     return course
+
+# Course or 404?
+def course_or_404(course_id):
+    try:
+        course = models.Course.get(models.Course.id == course_id)
+    except models.Course.DoesNotExist:
+        abort(404, "Course {} does not exist".format(course_id))
+    else:
+        return course
+
 
 # CourseList - returns list of courses
 class CourseList(Resource):
