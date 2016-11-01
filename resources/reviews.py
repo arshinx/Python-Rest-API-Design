@@ -1,12 +1,14 @@
 # Courses
 from flask import jsonify, Blueprint
-from flask.ext.restfull import Resource, Api
+from flask.ext.restful import Resource, Api
 import models
 
+# ReviewList - returns all reviews
 class ReviewList(Resource):
     def get(self):
         return jsonify({'reviews': [{'course': 1, 'rating': 5}] })
 
+# Review - returns a select review
 class Review(Resource):
     def get(self, id):
         return jsonify({'course': 1, 'rating': 5})

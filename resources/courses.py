@@ -3,10 +3,12 @@ from flask import jsonify, Blueprint
 from flask.ext.restful import Resource, Api
 import models
 
+# CourseList - returns list of courses
 class CourseList(Resource):
     def get(self):
         return jsonify({'courses': [{'title': 'Python Basics'}] })
 
+# Course - returns a single course
 class Course(Resource):
     def get(self, id):
         return jsonify({'title': 'Python Basics'})
@@ -17,6 +19,7 @@ class Course(Resource):
     def delete(self, id):
         return jsonify({'title': 'Python Basics'})
 
+# Construct API
 courses_api = Blueprint('resources.courses', __name__)
 api = Api(courses_api)
 api.add_resource(CourseList, '/api/v1/courses', endpoint='courses')
