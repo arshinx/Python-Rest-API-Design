@@ -1,6 +1,6 @@
 # Courses
 from flask import jsonify, Blueprint
-from flask.ext.restful import Resource, Api, reqparse
+from flask.ext.restful import Resource, Api, reqparse, inputs
 import models
 
 # CourseList - returns list of courses
