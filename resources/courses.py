@@ -51,10 +51,15 @@ class CourseList(Resource):
         courses = [marshal(add_reviews(course), course_fields) for course in models.Course.select()]
         return {'courses': courses}
 
+    @marshal_with(course_fields)
     def post(self):
         args = self.reqparse.parse_args()
-        models.Course.create(**args)
-        return jsonify({'courses': [{'title': 'Python Basics'}] })
+        course = models.Course.create(**args)
+        print(args["title"])
+        print(args['url'])
+        return (add_reviews(course), 201, {
+                'Location': url_for('resources.courses.course', id=course.id)}
+               )
 
 # Course - returns a single course
 class Course(Resource):
